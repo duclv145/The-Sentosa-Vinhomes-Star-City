@@ -47,34 +47,6 @@ export default function FloorPlans() {
           ))}
         </div>
 
-        {/* Unit info strip */}
-        <div className="mt-10 flex flex-wrap items-stretch justify-center divide-x divide-line border border-line bg-ink/50 backdrop-blur-sm">
-          <div className="flex flex-col items-center justify-center px-10 py-5">
-            <span className="text-[0.62rem] tracking-[0.3em] text-cream-muted uppercase">
-              Mã căn
-            </span>
-            <span className="mt-2 font-[family-name:var(--font-display)] text-2xl text-cream">
-              {fp.code}
-            </span>
-          </div>
-          <div className="flex flex-col items-center justify-center px-10 py-5">
-            <span className="text-[0.62rem] tracking-[0.3em] text-cream-muted uppercase">
-              Diện tích thông thủy
-            </span>
-            <span className="mt-2 font-[family-name:var(--font-display)] text-2xl gold-text">
-              {fp.thongthuy}
-            </span>
-          </div>
-          <div className="flex flex-col items-center justify-center px-10 py-5">
-            <span className="text-[0.62rem] tracking-[0.3em] text-cream-muted uppercase">
-              Diện tích tim tường
-            </span>
-            <span className="mt-2 font-[family-name:var(--font-display)] text-2xl text-cream">
-              {fp.timtuong}
-            </span>
-          </div>
-        </div>
-
         <button
           onClick={() => setZoom(true)}
           className="group relative mt-4 block aspect-video w-full cursor-zoom-in overflow-hidden border border-line"
