@@ -142,15 +142,15 @@ export const FLOORPLANS = [
     code: "S2-19",
     thongthuy: "32.4 m²",
     timtuong: "36.0 m²",
-    img: "/Tai-lieu/sentosa_salekit_images/page-43.jpg",
+    img: "/images/sk-plan-studio.jpg",
   },
   {
     key: "1pn",
-    name: "1 Phòng ngủ +1",
+    name: "1 Phòng ngủ",
     code: "S2-08",
     thongthuy: "45.0 m²",
     timtuong: "51.5 m²",
-    img: "/Tai-lieu/sentosa_salekit_images/page-42.jpg",
+    img: "/images/plan-1pn.png",
   },
   {
     key: "2pn",
@@ -158,7 +158,7 @@ export const FLOORPLANS = [
     code: "S2-12",
     thongthuy: "71.3 m²",
     timtuong: "77.0 m²",
-    img: "/Tai-lieu/sentosa_salekit_images/page-41.jpg",
+    img: "/images/sk-plan-2pn.jpg",
   },
   {
     key: "3pn",
@@ -166,7 +166,7 @@ export const FLOORPLANS = [
     code: "S2-04",
     thongthuy: "95.0 m²",
     timtuong: "116.0 m²",
-    img: "/Tai-lieu/sentosa_salekit_images/page-40.jpg",
+    img: "/images/plan-3pn.png",
   },
 ];
 
