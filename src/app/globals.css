@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #052a22;
+  --color-ink-soft: #073529;
+  --color-emerald-deep: #0a3d30;
+  --color-emerald: #0f5743;
+  --color-emerald-glow: #1c7d5f;
+  --color-surface: #0b3e31;
+  --color-surface-2: #114a3a;
+  --color-gold: #cba35c;
+  --color-gold-light: #ecd49e;
+  --color-gold-deep: #9c7836;
+  --color-cream: #f5efe0;
+  --color-cream-muted: #b9c4b3;
+  --color-line: rgba(203, 163, 92, 0.26);
+
+  --font-display: var(--font-display), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-deep);
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Brand gradient surfaces ---- */
+.bg-emerald-grad {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 35%,
+      var(--color-emerald-glow) 0%,
+      var(--color-emerald) 38%,
+      var(--color-emerald-deep) 70%,
+      var(--color-ink) 100%
+    );
+}
+.bg-emerald-soft {
+  background: linear-gradient(
+    180deg,
+    var(--color-ink) 0%,
+    var(--color-ink-soft) 50%,
+    var(--color-ink) 100%
+  );
+}
+
+.gold-text {
+  background: linear-gradient(
+    180deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold) 45%,
+    var(--color-gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Reveal-on-scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(42px);
+  transition:
+    opacity 1.1s var(--ease-lux),
+    transform 1.1s var(--ease-lux);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 1.4s var(--ease-lux),
+    transform 1.4s var(--ease-lux);
+}
+.reveal-scale.is-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- Decorative ---- */
+.gold-rule {
+  height: 1px;
+  width: 64px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.script {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes float-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+.scroll-cue {
+  animation: float-cue 2.2s ease-in-out infinite;
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-1.2%, -0.8%);
+  }
+}
+.kenburns {
+  animation: kenburns 9s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
